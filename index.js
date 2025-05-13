@@ -110,9 +110,9 @@ const data = [
 
 // EXPRESS 
 
-const express = require('express')
-const app = express()
-const port = 3000
+// import express, { json } from 'express';
+// const app = express()
+// const port = 3000
 
 // const db = ['Ceyla Quliyeva','Ilahe Ferzeliyeva']
 // const code = ['Code','Academy']
@@ -133,7 +133,7 @@ const port = 3000
 //     "name": "Confections"
 //   }]
 
-app.use(express.json());
+// app.use(json());
 
 // app.get('/ad', (req, res) => {
 //   res.send(db)
@@ -188,21 +188,21 @@ app.use(express.json());
 
 
 
-app.get('/blogs', (req, res) => {
-  res.send(data)
-})
-app.get('/blogs/:id', (req, res) => {
-  const { id } = req.params
-  const element = data.find(x => x.id === +id)
-  res.send(element)
-})
+// app.get('/blogs', (req, res) => {
+//   res.send(data)
+// })
+// app.get('/blogs/:id', (req, res) => {
+//   const { id } = req.params
+//   const element = data.find(x => x.id === +id)
+//   res.send(element)
+// })
 
-app.delete('/blogs/:id', (req, res) => {
-  const { id } = req.params
-  const filtered = data.filter(x => x.id !== +id)
-  console.log(filtered);
-  res.send(filtered)
-})
+// app.delete('/blogs/:id', (req, res) => {
+//   const { id } = req.params
+//   const filtered = data.filter(x => x.id !== +id)
+//   console.log(filtered);
+//   res.send(filtered)
+// })
 
 
 // app.post('/blogs', (req, res) => {
@@ -210,28 +210,28 @@ app.delete('/blogs/:id', (req, res) => {
 //   res.send(data)
 // })
 
-let id = data.length++;
-app.post('/blogs', (req, res) => {
-  const { title } = req.body
-  id++
-  data.push({
-    title,
-    id
-  })
-  res.send(data)
-})
+// let id = data.length++;
+// app.post('/blogs', (req, res) => {
+//   const { title } = req.body
+//   id++
+//   data.push({
+//     title,
+//     id
+//   })
+//   res.send(data)
+// })
 
-app.put('/blogs/:id', (req, res) => {
-  const { id } = req.params
-  const { title } = req.body
-  const dataPut = data.findIndex(x => x.id === parseInt(id))
-  data[dataPut].title = title;
-  res.send(data[dataPut])
-})
+// app.put('/blogs/:id', (req, res) => {
+//   const { id } = req.params
+//   const { title } = req.body
+//   const dataPut = data.findIndex(x => x.id === parseInt(id))
+//   data[dataPut].title = title;
+//   res.send(data[dataPut])
+// })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`)
+// })
 
 
 
@@ -240,3 +240,51 @@ app.listen(port, () => {
 // }
 
 // const {name} = obj
+
+
+
+//            MUHAZIRE
+
+
+
+
+
+import express, { json } from 'express';
+import mongoose from 'mongoose';
+const app = express()
+const port = 3000
+
+
+// const requestTime = function (req, res, next) {
+//   req.requestTime = Date.now()
+//   console.log(Date.now());
+//   next()
+// }
+
+// app.use(requestTime);
+
+// app.get('/num', (req, res) => {
+//   res.send([1,2,3,4,5])
+// })
+
+
+// app.get('/num',myCounter, (req, res) => {
+//   res.send([1,2,3,4,5])
+// })
+
+mongoose.connect('mongodb+srv://jeylasgbf206:jeylasgbf206@cluster0.1xsi3cl.mongodb.net/')
+  .then(() => console.log('Connected!'))
+  .catch(() => console.log(' No Connected!'));
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
+// let sorguSayi = 0
+// const myCounter = function (req, res, next) {
+//   sorguSayi++
+//   console.log(sorguSayi);
+//   next()
+// }
+
+
